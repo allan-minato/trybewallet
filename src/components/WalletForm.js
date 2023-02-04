@@ -38,11 +38,12 @@ class WalletForm extends Component {
   //     id, method, tag, currency, description, value, exchangeRates: data,
   //   }));
 
-  // handleChange = ({ target: { name, value } }) => {
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // };
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
   //   this.setState((prevState) => ({
   //     ...prevState,
   //     value: '',
@@ -54,15 +55,6 @@ class WalletForm extends Component {
   //     id: prevState.id + 1,
   //   }));
   // };
-  setValue = ({ target }) => this.setState({ value: target.value });
-
-  setdescription = ({ target }) => this.setState({ description: target.value });
-
-  setCurrency = ({ target }) => this.setState({ currency: target.value });
-
-  setPagamento = ({ target }) => this.setState({ method: target.value });
-
-  setTag = ({ target }) => this.setState({ tag: target.value });
 
   handleClick = () => {
     this.setState((prevState) => {
@@ -87,7 +79,7 @@ class WalletForm extends Component {
         <form id="walletForm">
           <ul>
             <input
-              onChange={ this.setValue }
+              onChange={ this.handleChange }
               name="value"
               data-testid="value-input"
               value={ value }
@@ -95,7 +87,7 @@ class WalletForm extends Component {
             Valor das despesas
             <br />
             <input
-              onChange={ this.setdescription }
+              onChange={ this.handleChange }
               type="text"
               name="description"
               data-testid="description-input"
@@ -104,7 +96,7 @@ class WalletForm extends Component {
             descrição da despesas
             <br />
             <select
-              onChange={ this.setCurrency }
+              onChange={ this.handleChange }
               data-testid="currency-input"
               name="currency"
               value={ currency }
@@ -117,7 +109,7 @@ class WalletForm extends Component {
             </select>
             <br />
             <select
-              onChange={ this.setPagamento }
+              onChange={ this.handleChange }
               data-testid="method-input"
               name="method"
               value={ method }
@@ -143,7 +135,7 @@ class WalletForm extends Component {
             </select>
             <br />
             <select
-              onChange={ this.setTag }
+              onChange={ this.handleChange }
               data-testid="tag-input"
               name="tag"
               value={ tag }
