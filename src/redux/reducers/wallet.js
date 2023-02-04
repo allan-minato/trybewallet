@@ -1,7 +1,8 @@
-import { FETCH_DATA_SUCCESS } from '../actions/ActionTypes';
+import { FETCH_DATA_SUCCESS, CREATE_EXPENSES } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
+  expenses: [],
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
@@ -9,7 +10,13 @@ const wallet = (state = INITIAL_STATE, action) => {
   case FETCH_DATA_SUCCESS:
     return {
       ...state,
-      currencies: Object.keys(action.payload).filter((currencie) => currencie !== 'USDT'), // transformando o retorno da API (currencies) em um array e removendo a moeda "USDT"//
+      currencies: action.currencies,
+    };
+  case CREATE_EXPENSES:
+    return {
+      ...state,
+      expenses: [...state.expenses, { ...action.expenses,
+        id: state.expenses.length }],
     };
   default:
     return state;

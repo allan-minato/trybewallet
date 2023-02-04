@@ -1,7 +1,7 @@
 import {
   UPDATE_EMAIL,
   UPDATE_PASSWORD,
-} from '../actions/ActionTypes';
+} from '../actions';
 
 const INITIAL_STATE = {
   email: '',
