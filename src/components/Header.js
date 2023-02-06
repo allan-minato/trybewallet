@@ -10,7 +10,6 @@ class Header extends Component {
       const eachExpenseValue = curr.value * curr.exchangeRates[curr.currency].ask;
       const sum = Number(eachExpenseValue) + parseFloat(acc);
       return sum.toFixed(2);
-      console.log(expenses);
     }, zero.toFixed(2));
     return totalSum;
   };
