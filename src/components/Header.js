@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 class Header extends Component {
   totalSum = () => {
     const { expenses } = this.props;
+    const num = 0;
     const totalSum = expenses.reduce((acc, curr) => {
       const eachExpenseValue = curr.value * curr.exchangeRates[curr.currency].ask;
       const sum = Number(eachExpenseValue) + parseFloat(acc);
       return sum.toFixed(2);
-    }, 0);
+    }, num.toFixed);
     return totalSum;
   };
 

@@ -4,6 +4,7 @@ export const LOGIN = 'LOGIN';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
 export const CREATE_EXPENSES = 'CREATE_EXPENSES';
+export const DELETE_EXPENSES = 'DELETE_EXPENSES';
 
 export const updateEmail = (email) => ({
   type: UPDATE_EMAIL,
@@ -27,6 +28,10 @@ export const fetchDataSuccess = (currencies) => ({
 export const createExpenses = (expenses) => ({
   type: CREATE_EXPENSES,
   expenses,
+});
+export const deleteExpenses = (payload) => ({
+  type: DELETE_EXPENSES,
+  payload,
 });
 
 export const fetchData = () => async (dispatch) => {
