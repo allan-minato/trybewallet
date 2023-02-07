@@ -16,9 +16,9 @@ export const updatePassword = (password) => ({
   password,
 });
 
-export const updateExpenses = (expenses) => ({
+export const updateExpenses = (updateExpense) => ({
   type: UPDATE_EXPENSES,
-  expenses,
+  updateExpense,
 });
 
 export const fetchDataSuccess = (currencies) => ({
