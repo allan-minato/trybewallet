@@ -5,6 +5,8 @@ export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
 export const CREATE_EXPENSES = 'CREATE_EXPENSES';
 export const DELETE_EXPENSES = 'DELETE_EXPENSES';
+export const EDIT_EXPENSES = 'EDIT_EXPENSES';
+export const EDITOR_CHANGE = 'EDITOR_CHANGE';
 
 export const updateEmail = (email) => ({
   type: UPDATE_EMAIL,
@@ -32,6 +34,15 @@ export const createExpenses = (expenses) => ({
 export const deleteExpenses = (payload) => ({
   type: DELETE_EXPENSES,
   payload,
+});
+export const editExpenses = (newState, idToEdit) => ({
+  type: EDIT_EXPENSES,
+  idToEdit,
+  newState,
+});
+export const editorChange = (id) => ({
+  type: EDITOR_CHANGE,
+  id,
 });
 
 export const fetchData = () => async (dispatch) => {

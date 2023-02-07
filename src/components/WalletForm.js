@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchData, fetchAllInfo } from '../redux/actions';
+import { fetchData, fetchAllInfo, editExpenses } from '../redux/actions';
 
 class WalletForm extends Component {
   INITIAL_STATE = {
@@ -67,10 +67,21 @@ class WalletForm extends Component {
     this.resetState();
   };
 
+  handleEdit = () => {
+    this.setState((prevState) => {
+      const newState = { ...prevState };
+      delete newState.expenses;
+
+      const { dispatch, idToEdit } = this.props;
+      dispatch(editExpenses(newState, idToEdit));
+    });
+    this.resetState();
+  };
+
   render() {
     const { method, tag, currency, description, value } = this.state;
 
-    const { currencies } = this.props;
+    const { currencies, editor } = this.props;
     return (
       <div>
         <h3>
@@ -173,10 +184,10 @@ class WalletForm extends Component {
             </select>
           </ul>
           <button
-            onClick={ this.handleClick }
+            onClick={ editor ? this.handleEdit : this.handleClick }
             type="button"
           >
-            Adicionar despesas
+            { editor ? 'Editar despesa' : 'Adicionar despesas' }
           </button>
         </form>
       </div>
@@ -191,5 +202,7 @@ WalletForm.propTypes = {
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  editor: state.wallet.editor,
+  idToEdit: state.wallet.idToEdit,
 });
 export default connect(mapStateToProps)(WalletForm);
