@@ -59,8 +59,7 @@ class WalletForm extends Component {
   handleClick = () => {
     this.setState((prevState) => {
       const newState = { ...prevState };
-      delete newState.expenses;
-
+      // delete newState.expenses;
       const { dispatch } = this.props;
       dispatch(fetchAllInfo(newState));
     });
